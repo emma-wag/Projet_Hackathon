@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+download_gene        2              1              1
+total                3              1              1
+
+Select jobs to execute...
+
+[Fri Oct 15 13:28:59 2021]
+rule download_gene:
+    output: /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz
+    jobid: 1
+    wildcards: sample=2, i=1
+    resources: tmpdir=/tmp
+
+[Fri Oct 15 13:28:59 2021]
+Error in rule download_gene:
+    jobid: 1
+    output: /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz
+    shell:
+        
+			wget -O /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR628/SRR628582/SRR628582_1.fastq.gz
+		
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job download_gene since they might be corrupted:
+/mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-15T132859.460699.snakemake.log

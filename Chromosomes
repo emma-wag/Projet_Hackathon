@@ -1,0 +1,14 @@
+chromosome_nb = list(range(1,23))
+
+
+rule all:
+        input:
+                directory(expand("/mnt/mydatalocal/chromosome/Chr{sample}/", sample = chromosome_nb))
+
+rule download_chr:
+        output: directory("/mnt/mydatalocal/chromosome/Chr{sample}/")
+        shell:
+                """
+                        mkdir {output}
+                        wget -P {output} "ftp://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.{wildcards.sample}.fa.gz"
+                """

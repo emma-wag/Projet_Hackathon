@@ -1,0 +1,36 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count    min threads    max threads
+---------  -------  -------------  -------------
+all              1              1              1
+unzip_chr        1              1              1
+total            2              1              1
+
+Select jobs to execute...
+
+[Thu Oct 21 15:00:12 2021]
+rule unzip_chr:
+    input: /mnt/mydatalocal/chromosome/Chr22/Homo_sapiens.GRCh38.dna.chromosome.22.fa.gz
+    output: /mnt/mydatalocal/chromosome/Chr22/Homo_sapiens.GRCh38.dna.chromosome.22.fa
+    jobid: 22
+    wildcards: sample=22
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:00:13 2021]
+Finished job 22.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:00:13 2021]
+localrule all:
+    input: /mnt/mydatalocal/chromosome/Chr1/Homo_sapiens.GRCh38.dna.chromosome.1.fa, /mnt/mydatalocal/chromosome/Chr2/Homo_sapiens.GRCh38.dna.chromosome.2.fa, /mnt/mydatalocal/chromosome/Chr3/Homo_sapiens.GRCh38.dna.chromosome.3.fa, /mnt/mydatalocal/chromosome/Chr4/Homo_sapiens.GRCh38.dna.chromosome.4.fa, /mnt/mydatalocal/chromosome/Chr5/Homo_sapiens.GRCh38.dna.chromosome.5.fa, /mnt/mydatalocal/chromosome/Chr6/Homo_sapiens.GRCh38.dna.chromosome.6.fa, /mnt/mydatalocal/chromosome/Chr7/Homo_sapiens.GRCh38.dna.chromosome.7.fa, /mnt/mydatalocal/chromosome/Chr8/Homo_sapiens.GRCh38.dna.chromosome.8.fa, /mnt/mydatalocal/chromosome/Chr9/Homo_sapiens.GRCh38.dna.chromosome.9.fa, /mnt/mydatalocal/chromosome/Chr10/Homo_sapiens.GRCh38.dna.chromosome.10.fa, /mnt/mydatalocal/chromosome/Chr11/Homo_sapiens.GRCh38.dna.chromosome.11.fa, /mnt/mydatalocal/chromosome/Chr12/Homo_sapiens.GRCh38.dna.chromosome.12.fa, /mnt/mydatalocal/chromosome/Chr13/Homo_sapiens.GRCh38.dna.chromosome.13.fa, /mnt/mydatalocal/chromosome/Chr14/Homo_sapiens.GRCh38.dna.chromosome.14.fa, /mnt/mydatalocal/chromosome/Chr15/Homo_sapiens.GRCh38.dna.chromosome.15.fa, /mnt/mydatalocal/chromosome/Chr16/Homo_sapiens.GRCh38.dna.chromosome.16.fa, /mnt/mydatalocal/chromosome/Chr17/Homo_sapiens.GRCh38.dna.chromosome.17.fa, /mnt/mydatalocal/chromosome/Chr18/Homo_sapiens.GRCh38.dna.chromosome.18.fa, /mnt/mydatalocal/chromosome/Chr19/Homo_sapiens.GRCh38.dna.chromosome.19.fa, /mnt/mydatalocal/chromosome/Chr20/Homo_sapiens.GRCh38.dna.chromosome.20.fa, /mnt/mydatalocal/chromosome/Chr21/Homo_sapiens.GRCh38.dna.chromosome.21.fa, /mnt/mydatalocal/chromosome/Chr22/Homo_sapiens.GRCh38.dna.chromosome.22.fa
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:00:13 2021]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-21T150012.096400.snakemake.log

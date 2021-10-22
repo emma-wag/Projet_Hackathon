@@ -1,0 +1,101 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+unzip_genes_1        6              1              1
+total                7              1              1
+
+Select jobs to execute...
+
+[Thu Oct 21 15:30:50 2021]
+rule unzip_genes_1:
+    input: /mnt/mydatalocal/genes/SRR628587/SRR628587_1.fastq.gz
+    output: /mnt/mydatalocal/genes/SRR628587/SRR628587_1.fastq
+    jobid: 6
+    wildcards: sample=7
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:32:04 2021]
+Finished job 6.
+1 of 7 steps (14%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:32:04 2021]
+rule unzip_genes_1:
+    input: /mnt/mydatalocal/genes/SRR628585/SRR628585_1.fastq.gz
+    output: /mnt/mydatalocal/genes/SRR628585/SRR628585_1.fastq
+    jobid: 4
+    wildcards: sample=5
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:33:09 2021]
+Finished job 4.
+2 of 7 steps (29%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:33:10 2021]
+rule unzip_genes_1:
+    input: /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz
+    output: /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq
+    jobid: 1
+    wildcards: sample=2
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:34:11 2021]
+Finished job 1.
+3 of 7 steps (43%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:34:11 2021]
+rule unzip_genes_1:
+    input: /mnt/mydatalocal/genes/SRR628586/SRR628586_1.fastq.gz
+    output: /mnt/mydatalocal/genes/SRR628586/SRR628586_1.fastq
+    jobid: 5
+    wildcards: sample=6
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:34:56 2021]
+Finished job 5.
+4 of 7 steps (57%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:34:56 2021]
+rule unzip_genes_1:
+    input: /mnt/mydatalocal/genes/SRR628583/SRR628583_1.fastq.gz
+    output: /mnt/mydatalocal/genes/SRR628583/SRR628583_1.fastq
+    jobid: 2
+    wildcards: sample=3
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:36:10 2021]
+Finished job 2.
+5 of 7 steps (71%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:36:10 2021]
+rule unzip_genes_1:
+    input: /mnt/mydatalocal/genes/SRR628584/SRR628584_1.fastq.gz
+    output: /mnt/mydatalocal/genes/SRR628584/SRR628584_1.fastq
+    jobid: 3
+    wildcards: sample=4
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:36:58 2021]
+Finished job 3.
+6 of 7 steps (86%) done
+Select jobs to execute...
+
+[Thu Oct 21 15:36:58 2021]
+localrule all:
+    input: /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq, /mnt/mydatalocal/genes/SRR628583/SRR628583_1.fastq, /mnt/mydatalocal/genes/SRR628584/SRR628584_1.fastq, /mnt/mydatalocal/genes/SRR628585/SRR628585_1.fastq, /mnt/mydatalocal/genes/SRR628586/SRR628586_1.fastq, /mnt/mydatalocal/genes/SRR628587/SRR628587_1.fastq, /mnt/mydatalocal/genes/SRR628588/SRR628588_1.fastq
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 15:36:58 2021]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-21T153050.037353.snakemake.log

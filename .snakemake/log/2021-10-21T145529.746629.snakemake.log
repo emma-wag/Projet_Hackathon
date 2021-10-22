@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count    min threads    max threads
+---------  -------  -------------  -------------
+all              1              1              1
+unzip_chr       20              1              1
+total           21              1              1
+
+Select jobs to execute...
+
+[Thu Oct 21 14:55:30 2021]
+rule unzip_chr:
+    output: /mnt/mydatalocal/chromosome/Chr18/Homo_sapiens.GRCh38.dna.chromosome.18.fa
+    jobid: 18
+    wildcards: sample=18
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 14:55:30 2021]
+Error in rule unzip_chr:
+    jobid: 18
+    output: /mnt/mydatalocal/chromosome/Chr18/Homo_sapiens.GRCh38.dna.chromosome.18.fa
+    shell:
+        
+			gunzip -c  > /mnt/mydatalocal/chromosome/Chr18/Homo_sapiens.GRCh38.dna.chromosome.18.fa
+                
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job unzip_chr since they might be corrupted:
+/mnt/mydatalocal/chromosome/Chr18/Homo_sapiens.GRCh38.dna.chromosome.18.fa
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-21T145529.746629.snakemake.log

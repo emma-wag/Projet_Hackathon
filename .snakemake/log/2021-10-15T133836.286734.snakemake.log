@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+download_gene        2              1              1
+total                3              1              1
+
+Select jobs to execute...
+
+[Fri Oct 15 13:38:36 2021]
+rule download_gene:
+    output: /mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz
+    jobid: 1
+    wildcards: sample=2, i=1
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 15 of /home/ubuntu/Projet_Hackaton/Snakefile:
+Job Missing files after 5 seconds:
+/mnt/mydatalocal/genes/SRR628582/SRR628582_1.fastq.gz
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job id: 1 completed successfully, but some output files are missing. 1
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-15T133836.286734.snakemake.log

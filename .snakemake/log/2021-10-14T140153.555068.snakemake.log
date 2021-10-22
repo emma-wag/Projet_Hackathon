@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+count        2              1              1
+total        3              1              1
+
+Select jobs to execute...
+
+[Thu Oct 14 14:01:53 2021]
+rule count:
+    input: README.md
+    output: /mnt/mydatalocal/genes/SRR628582/SRR628582_1, SRR628582/SRR628582_1.fastq.gz
+    jobid: 1
+    wildcards: sample=2, i=1
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Thu Oct 14 14:06:58 2021]
+Error in rule count:
+    jobid: 1
+    output: /mnt/mydatalocal/genes/SRR628582/SRR628582_1, SRR628582/SRR628582_1.fastq.gz
+    shell:
+        
+			wget "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR628/SRR628582/SRR628582_1.fastq.gz" > /mnt/mydatalocal/genes/SRR628582/SRR628582_1
+		
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-14T140153.555068.snakemake.log

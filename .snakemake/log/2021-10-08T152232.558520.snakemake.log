@@ -1,0 +1,21 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+count       16              1              1
+total       17              1              1
+
+Select jobs to execute...
+
+[Fri Oct  8 15:22:33 2021]
+rule count:
+    input: README.md
+    output: genes/SRR628585/SRR628585_1.fastq.gz
+    jobid: 7
+    wildcards: sample=5, i=1
+    resources: tmpdir=/tmp
+

@@ -1,0 +1,22 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+download_gene        2              1              1
+total                3              1              1
+
+Select jobs to execute...
+
+[Thu Oct 21 12:21:13 2021]
+rule download_gene:
+    output: /mnt/mydatalocal/genes/SRR628584
+    jobid: 2
+    wildcards: sample=4
+    resources: tmpdir=/tmp
+
+RuleException in line 9 of /home/ubuntu/Projet_Hackaton/Snakefile:
+'Wildcards' object has no attribute 'i'

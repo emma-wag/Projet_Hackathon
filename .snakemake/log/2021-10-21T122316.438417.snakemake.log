@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+download_gene        1              1              1
+total                2              1              1
+
+Select jobs to execute...
+
+[Thu Oct 21 12:23:16 2021]
+rule download_gene:
+    output: /mnt/mydatalocal/genes/SRR628583
+    jobid: 1
+    wildcards: sample=3
+    resources: tmpdir=/tmp
+
+ImproperOutputException in line 8 of /home/ubuntu/Projet_Hackaton/Snakefile:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule download_gene:
+/mnt/mydatalocal/genes/SRR628583
+Removing output files of failed job download_gene since they might be corrupted:
+/mnt/mydatalocal/genes/SRR628583
+Skipped removing non-empty directory /mnt/mydatalocal/genes/SRR628583
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-21T122316.438417.snakemake.log

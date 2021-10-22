@@ -1,0 +1,22 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+total        1              1              1
+
+Select jobs to execute...
+
+[Thu Oct 21 14:31:31 2021]
+localrule all:
+    input: /mnt/mydatalocal/chromosome/Chr1, /mnt/mydatalocal/chromosome/Chr2, /mnt/mydatalocal/chromosome/Chr3, /mnt/mydatalocal/chromosome/Chr4, /mnt/mydatalocal/chromosome/Chr5, /mnt/mydatalocal/chromosome/Chr6, /mnt/mydatalocal/chromosome/Chr7, /mnt/mydatalocal/chromosome/Chr8, /mnt/mydatalocal/chromosome/Chr9, /mnt/mydatalocal/chromosome/Chr10, /mnt/mydatalocal/chromosome/Chr11, /mnt/mydatalocal/chromosome/Chr12, /mnt/mydatalocal/chromosome/Chr13, /mnt/mydatalocal/chromosome/Chr14, /mnt/mydatalocal/chromosome/Chr15, /mnt/mydatalocal/chromosome/Chr16, /mnt/mydatalocal/chromosome/Chr17, /mnt/mydatalocal/chromosome/Chr18, /mnt/mydatalocal/chromosome/Chr19, /mnt/mydatalocal/chromosome/Chr20, /mnt/mydatalocal/chromosome/Chr21
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Thu Oct 21 14:31:31 2021]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-21T143131.009139.snakemake.log
