@@ -1,4 +1,4 @@
-gene_names = list(range(2,9))
+gene_names = list(range(2,10))
 chromosome_nb = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "MT"]
 
 rule all:
@@ -59,7 +59,7 @@ rule concatenate_genome:
 
 rule index_genome:
         input: "genome/genome.fa"
-        output: "genome_index/genomeParameters.txt"
+        output: "genome_index/SAindex"
         singularity: "docker://evolbioinfo/star:v2.7.6a"
         threads: 8
         shell:
@@ -79,7 +79,7 @@ rule mapping:
         input:
                 g1 = "genes/SRR62858{sample}/SRR62858{sample}_1.fastq",
                 g2 = "genes/SRR62858{sample}/SRR62858{sample}_2.fastq",
-                genome = "genome_index/genomeParameters.txt"
+                genome = "genome_index/SAindex"
         output: "mapping_files/SRR62858{sample}.bam"
         singularity: "docker://evolbioinfo/star:v2.7.6a"
         threads: 12
