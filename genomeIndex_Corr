@@ -1,9 +1,0 @@
-rule index_genome:
-	input: "Homo_sapiens.GRCh38.dna.chromosome.22.fa"
-        output: "genome_index/genomeParameters.txt"
-        singularity: "docker://evolbioinfo/star:v2.7.6a"
-	threads: 4
-        shell:
-                """
-			STAR --runThreadN {threads} --runMode genomeGenerate --genomeDir genome_index/ --genomeFastaFiles {input}
-		"""

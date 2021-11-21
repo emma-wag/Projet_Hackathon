@@ -1,9 +1,0 @@
-rule index_genome:
-	input: "/mnt/mydatalocal/genome.fa"
-        output: "/mnt/mydatalocal/genome_index/genomeParameters.txt"
-        singularity: "docker://evolbioinfo/star:v2.7.6a"
-	threads: 4
-        shell:
-		"""
-			STAR --runThreadN {threads} --runMode genomeGenerate --genomeDir /mnt/mydatalocal/genome_index/ --genomeFastaFiles {input}			
-		"""
