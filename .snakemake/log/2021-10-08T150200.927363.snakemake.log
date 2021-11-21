@@ -1,4 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 9 of /home/ubuntu/Projet_Hackaton/Snakefile:
-Missing input files for rule count:
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR628/SRR628582/SRR628582_1.fastq.gz
