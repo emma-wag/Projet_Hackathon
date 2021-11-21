@@ -1,4 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 6 of /home/ubuntu/Projet_Hackaton/Unzip_Genes1:
-Missing input files for rule unzip_genes_1:
-/mnt/mydatalocal/genes/SRR628581/SRR628581_1.fastq.gz

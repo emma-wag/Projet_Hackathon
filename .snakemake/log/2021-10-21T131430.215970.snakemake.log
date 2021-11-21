@@ -1,4 +1,0 @@
-The flag 'directory' used in rule all is only valid for outputs, not inputs.
-Building DAG of jobs...
-Nothing to be done.
-Complete log: /home/ubuntu/Projet_Hackaton/.snakemake/log/2021-10-21T131430.215970.snakemake.log
