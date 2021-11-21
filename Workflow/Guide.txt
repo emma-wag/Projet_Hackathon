@@ -1,0 +1,52 @@
+#-----------------------------------------------------------------------------------------------------
+#               Contenu
+#-----------------------------------------------------------------------------------------------------
+1. snakefile : Workflow principal (du téléchargement des fichiers FASTQ à l'analyse statistique)
+2. Script_Hackathon.R : script R utilisé dans le "snakefile" pour faire l'analyse statistique des counts grâce à la libraire DESeq2
+3. Script_AnalyseStat.R : script R qui utilise la sortie du snakefile pour faire deux types de graphes (ACP et ENhancedVolcano)
+
+#-----------------------------------------------------------------------------------------------------
+#               Utilisation du Workflow Snakefile            
+#----------------------------------------------------------------------------------------------------- 
+
+# Utilisation d'une Machine Virtuelle d'au moins 32 Go de mémoire
+
+#Activation du package conda
+conda activate 
+
+# Téléchargement de Singularity
+conda install singularity=3.6.3
+
+#Récupérer le workflow 
+git clone git@github.com:emma-wag/Projet_Hackaton.git
+
+#L'exécution de workflow demande beaucoup d'espace, donc nous ne pouvons pas le faire directement dans le répertoire ~/Projet_Hackaton. Nous nous placons donc dans mydatalocal pour avoir assez d'espace
+cd /mnt/mydatalocal
+
+#Exécuter le workflow
+snakemake --use-singularity --cores 12 -s /home/ubuntu/Projet_Hackaton/Workflow/snakefile
+
+#Le script peut prendre 1h30 à 2h pour tout exécuter. Vous pouvez lancer la commande en arrière plan
+snakemake --use-singularity --cores 12 -s /home/ubuntu/Projet_Hackaton/Workflow/snakefile &
+
+#Si votre commande est déjà lancée et que vous voulez la mettre en arrière plan
+ctrl + Z #pour mettre la commande en pause
+bg
+
+#A la fin, vous devriez obtenir dans le répertoire /mnt/mydatalocal les dossiers suivants : chromosome, counting_files, genes, genome, genome_annot, genome_index, mapping_files et un fichier stats.Rdata
+
+#-----------------------------------------------------------------------------------------------------
+#               Utilisation du Script_AnalyseStat.R            
+#----------------------------------------------------------------------------------------------------- 
+
+#Ouvrir R (attention à avoir une version récente)
+
+#Télécharger le Script_AnalyseStat.R et le fichier stats.Rdata (vous pouvez le trouver sur le dépôt Git dans le dossier Resultats
+
+#Placer les 2 fichiers dans un même dossier sur votre ordinateur
+
+#Ouvrir Script_AnalyseStat.R sur R et exécuter tout le fichier (RUN ou ctrl + alt + R) 
+# ATTENTION : si vous avez un message d'erreur 'No such file or directory' pour stats.Rdata, récupérez le chemin exact du fichier et remplacez la commande load pour
+load(*chemin*/stats.Rdata)
+
+
