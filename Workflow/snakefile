@@ -1,9 +1,12 @@
-gene_names = list(range(2,10))
+# Création des variables
+gene_names = list(range(2,10)) 
 chromosome_nb = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "MT"]
 
+#Définition de la dernière sortie du workflow
 rule all:
 	input: "stats.Rdata"
 
+#Télechargement des gènes (uniquement les "_1.fastq.gz")
 rule download_gene1:
         output: "genes/SRR62858{sample}/SRR62858{sample}_1.fastq.gz"
         shell:
@@ -11,6 +14,7 @@ rule download_gene1:
                         wget -O {output} "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR628/SRR62858{wildcards.sample}/SRR62858{wildcards.sample}_1.fastq.gz"
                 """
 
+#Télechargement des gènes (uniquement les "_2.fastq.gz")
 rule download_gene2:
         output: "genes/SRR62858{sample}/SRR62858{sample}_2.fastq.gz"
         shell:
@@ -18,6 +22,7 @@ rule download_gene2:
                         wget -O {output} "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR628/SRR62858{wildcards.sample}/SRR62858{wildcards.sample}_2.fastq.gz"
                 """
 
+#Télechargement des chromosomes
 rule download_chr:
         output: "chromosome/Chr{chr_list}/Homo_sapiens.GRCh38.dna.chromosome.{chr_list}.fa.gz"
         shell:
@@ -25,6 +30,7 @@ rule download_chr:
                     wget -O {output} "ftp://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.{wildcards.chr_list}.fa.gz"
                 """
 
+#Unzip les fichiers des gènes "_1.fatsq.gz" en fichier "_1.fastq"
 rule unzip_genes_1:
         input: "genes/SRR62858{sample}/SRR62858{sample}_1.fastq.gz"
         output: "genes/SRR62858{sample}/SRR62858{sample}_1.fastq"
@@ -33,6 +39,7 @@ rule unzip_genes_1:
                         gunzip -c {input} > {output}
                 """
 
+#Unzip les fichiers des gènes "_2.fatsq.gz" en fichier "_2.fastq"
 rule unzip_genes_2:
         input: "genes/SRR62858{sample}/SRR62858{sample}_2.fastq.gz"
         output: "genes/SRR62858{sample}/SRR62858{sample}_2.fastq"
@@ -41,6 +48,7 @@ rule unzip_genes_2:
                         gunzip -c {input} > {output}
                 """
 
+#Unzip des fichiers des chromosomes (passage de fa.gz à fa)
 rule unzip_chr:
         input: "chromosome/Chr{chr_list}/Homo_sapiens.GRCh38.dna.chromosome.{chr_list}.fa.gz"
         output: "chromosome/Chr{chr_list}/Homo_sapiens.GRCh38.dna.chromosome.{chr_list}.fa"
@@ -49,6 +57,7 @@ rule unzip_chr:
                         gunzip -c {input} > {output}
                 """
 
+#Concaténation du génome : on met les 23 fichiers chromosome les uns après les autres dans un même fichier qu'on appelle genome.fa
 rule concatenate_genome:
         input: expand("chromosome/Chr{chr_list}/Homo_sapiens.GRCh38.dna.chromosome.{chr_list}.fa", chr_list = chromosome_nb)
         output: "genome/genome.fa"
@@ -57,6 +66,7 @@ rule concatenate_genome:
                         cat {input} > {output}
                 """
 
+#Indexation du génome grâce à l'outil STAR - la commande est longue à tourner donc on utilise threads = 8
 rule index_genome:
         input: "genome/genome.fa"
         output: "genome_index/SAindex"
@@ -67,6 +77,7 @@ rule index_genome:
                         STAR --runThreadN {threads} --runMode genomeGenerate --genomeDir genome_index/ --genomeFastaFiles {input}
                 """
 
+#Télechargement du fichier d'annotation et on unzip directement ce fichier après téléchargement
 rule annotation:
 	output: "genome_annot/Homo_sapiens.GRCh38.101.chr.gtf"
         shell:
@@ -75,6 +86,7 @@ rule annotation:
 			gunzip -c "genome_annot/Homo_sapiens.GRCh38.101.chr.gtf.gz" > {output}
                 """
 
+#Mapping du genome grâce à l'outil STAR - on augmente le nombre de threads car la commande est longue
 rule mapping:
         input:
                 g1 = "genes/SRR62858{sample}/SRR62858{sample}_1.fastq",
@@ -88,6 +100,7 @@ rule mapping:
                         STAR --outSAMstrandField intronMotif --outFilterMismatchNmax 4 --outFilterMultimapNmax 10 --genomeDir genome_index/ --readFilesIn {input.g1} {input.g2} --runThreadN {threads} --outSAMunmapped None --outSAMtype BAM SortedByCoordinate --outStd BAM_SortedByCoordinate --genomeLoad NoSharedMemory --limitBAMsortRAM 60000000000  > {output}
                 """
 
+#Comptage des reads en utilisant l'outil featureCounts
 rule count:
         input:
                 map = "mapping_files/SRR62858{sample}.bam",
@@ -100,6 +113,7 @@ rule count:
                         featureCounts -T {threads} -t gene -g gene_id -s 0 -a {input.gtf} -o {output} {input.map}
                 """
 
+#Analyse statistique sur les "counts" grâce à un script R nommé Script_Hackathon.R
 rule stat:
 	input: expand("counting_files/SRR62858{sample}.counts", sample = gene_names)
 	output: "stats.Rdata"
