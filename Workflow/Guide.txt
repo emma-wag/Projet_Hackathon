@@ -18,16 +18,16 @@ conda activate
 conda install singularity=3.6.3
 
 #Récupérer le workflow 
-git clone git@github.com:emma-wag/Projet_Hackaton.git
+git clone git@github.com:emma-wag/Projet_Hackathon.git
 
 #L'exécution de workflow demande beaucoup d'espace, donc nous ne pouvons pas le faire directement dans le répertoire ~/Projet_Hackaton. Nous nous placons donc dans mydatalocal pour avoir assez d'espace
 cd /mnt/mydatalocal
 
 #Exécuter le workflow
-snakemake --use-singularity --cores 12 -s /home/ubuntu/Projet_Hackaton/Workflow/snakefile
+snakemake --use-singularity --cores 12 -s /home/ubuntu/Projet_Hackathon/Workflow/snakefile
 
 #Le script peut prendre 1h30 à 2h pour tout exécuter. Vous pouvez lancer la commande en arrière plan
-snakemake --use-singularity --cores 12 -s /home/ubuntu/Projet_Hackaton/Workflow/snakefile &
+snakemake --use-singularity --cores 12 -s /home/ubuntu/Projet_Hackathon/Workflow/snakefile &
 
 #Si votre commande est déjà lancée et que vous voulez la mettre en arrière plan
 ctrl + Z #pour mettre la commande en pause

@@ -118,4 +118,4 @@ rule stat:
 	input: expand("counting_files/SRR62858{sample}.counts", sample = gene_names)
 	output: "stats.Rdata"
 	singularity: "docker://evolbioinfo/deseq2:v1.28.1"
-	script: "/home/ubuntu/Projet_Hackaton/Workflow/Script_Hackathon.R"
+	script: "/home/ubuntu/Projet_Hackathon/Workflow/Script_Hackathon.R"
