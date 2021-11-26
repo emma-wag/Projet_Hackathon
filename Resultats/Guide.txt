@@ -5,5 +5,5 @@
 2. Percentage of explained variances.png : Graphique qui nous permet de choisir les dimensions pour l'ACP
 3. ACP Dim1-Dim2.png : ACP sur les dimensions 1 et 2 (choisies grâce au graphique précédent) 
 4. ACP Dim2-Dim3.png : ACP sur les dimensions 2 et 3 (Dim1-Dim2 aurait suffit, mais nous avons trouvé que la Dim 3 était aussi assez élevée donc nous avons testé)
-5. WildType VS Muté.png : EnhancedVolcano Plot (-log10 de la p-value ajustée en fonction du Log2 fold change)
+5. Enhanced Volcano Plot.png : EnhancedVolcano Plot (-log10 de la p-value ajustée en fonction du Log2 fold change)
 
