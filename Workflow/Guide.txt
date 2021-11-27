@@ -20,7 +20,7 @@ conda install singularity=3.6.3
 #Récupérer le workflow 
 git clone git@github.com:emma-wag/Projet_Hackathon.git
 
-#L'exécution de workflow demande beaucoup d'espace, donc nous ne pouvons pas le faire directement dans le répertoire ~/Projet_Hackathon. Nous nous placons donc dans mydatalocal pour avoir assez d'espace
+#L'exécution de workflow demande beaucoup d'espace, donc nous ne pouvons pas le faire directement dans le répertoire ~/Projet_Hackathon. Nous nous plaçons donc dans mydatalocal pour avoir assez d'espace
 cd /mnt/mydatalocal
 
 #Exécuter le workflow
